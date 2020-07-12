@@ -34,3 +34,7 @@ Este código está licenciado por la Licencia Pública General versión 3 de GNU
     sudo /etc/init.d/weewx stop
     sudo /etc/init.d/weewx start
     ```
+
+## Bugs Conocidos
+
+Este plugin no permite transmitir datos de radiación solar/UV ni tampoco sensores de suelo.
