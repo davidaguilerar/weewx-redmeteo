@@ -45,21 +45,10 @@ import weewx
 import weewx.restx
 import weewx.units
 
-from __future__ import absolute_import
-from distutils.version import StrictVersion
-
-import weewx.almanac
-import weewx.manager
-import weewx.wxformulas
-import weeutil.weeutil
-import weedb
-
-from weewx.engine import StdService
-
 VERSION = "0.1"
 
-if weewx.__version__ < "3.5.0":
-    raise weewx.UnsupportedFeature("weewx 3.5 is required, found %s" %
+if weewx.__version__ < "3":
+    raise weewx.UnsupportedFeature("WeeWX 3 es requerido, usted tiene %s" %
                                    weewx.__version__)
 
 
@@ -98,13 +87,6 @@ def _mps_to_knot(v):
     from_t = (v, 'meter_per_second', 'group_speed')
     return weewx.units.convert(from_t, 'knot')[0]
 
-def calc_rain_day(dbm, ts):
-    sts = weeutil.weeutil.startOfDay(ts)
-    val = dbm.getSql("SELECT SUM(rain) FROM %s "
-                     "WHERE dateTime>? AND dateTime<=?" % dbm.table_name, 
-                     (sts, ts))
-    return val[0] if val is not None else None
-
 class Redmeteo(weewx.restx.StdRESTbase):
     def __init__(self, engine, config_dict):
         """Este servicio reconoce el siguiente login
@@ -120,12 +102,12 @@ class Redmeteo(weewx.restx.StdRESTbase):
 
         try:
             site_dict['manager_dict'] = weewx.manager.get_manager_dict_from_config(config_dict, 'wx_binding')
-            dbm = self.engine.db_binder.get_manager('wx_binding')
+            #dbm = self.engine.db_binder.get_manager('wx_binding')
         except weewx.UnknownBinding:
             pass
 
         self.archive_queue = queue.Queue()
-        self.archive_thread = RedmeteoThread(self.archive_queue, dbm, **site_dict)
+        self.archive_thread = RedmeteoThread(self.archive_queue, **site_dict)
         self.archive_thread.start()
         self.bind(weewx.NEW_ARCHIVE_RECORD, self.new_archive_record)
         loginf("Data will be uploaded for %s" % site_dict['idestacion'])
@@ -142,15 +124,14 @@ class RedmeteoThread(weewx.restx.RESTThread):
                  'wgust': ('windGust', '%.1f'),  # knots
                  'baro': ('barometer', '%.3f'),  # hPa
                  'rh': ('outHumidity', '%.1f'),  # %
-                 #'rain': (('rain'), '%.2f'),  # mm
-                 # lluvia puesta abajo, para ser calculada
+                 'rain': (('dayRain'), '%.2f'),  # mm
                  'heatindex': ('heatindex', '%.1f'), # ?
                  'windchill': ('windchill', '%.1f'), # C
                  'dewpoint': ('dewpoint', '%.1f'), # C
                  'presstrend': "NULL"   #nothing
                  }
 
-    def __init__(self, dbm, queue, idestacion, manager_dict,
+    def __init__(self, queue, idestacion, manager_dict,
                  server_url=_SERVER_URL, skip_upload=False,
                  post_interval=60, max_backlog=sys.maxsize, stale=None,
                  log_success=True, log_failure=True,
@@ -166,10 +147,9 @@ class RedmeteoThread(weewx.restx.RESTThread):
                                              timeout=timeout,
                                              max_tries=max_tries,
                                              retry_wait=retry_wait,
-                                             skip_upload=skip_upload, dbm=dbm)
+                                             skip_upload=skip_upload)
         self.idestacion = idestacion
         self.server_url = server_url
-        self.database = dbm
 
     def check_response(self, response):
         lines = []
@@ -197,8 +177,7 @@ class RedmeteoThread(weewx.restx.RESTThread):
             'wsunit': "kts",
             'tempunit': "C",
             'presunit': "hPa",
-            'rainunit': "mm",
-            'rain': calc_rain_day(self.database, time_tt) #lluvia en mm
+            'rainunit': "mm"
         }
 
         for key in self._DATA_MAP:

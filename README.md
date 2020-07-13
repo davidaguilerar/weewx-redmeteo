@@ -6,7 +6,7 @@ Basado en la [Extensión de Weewx-Windguru](https://github.com/claudobahn/weewx-
 
 Este código está licenciado por la Licencia Pública General versión 3 de GNU (GPLv3). Úsese bajo su propio riesgo. No hay garantías de su funcionamiento.
 
-### Requerimientos: Este plugin necesita al menos WeeWX versión 3.5 o superior corriendo en tu sistema.
+### Requerimientos: Este plugin necesita al menos WeeWX versión 3 o superior corriendo en tu sistema.
 
 ## Instalación en tu sistema corriendo WeeWX 
 1. Envía un correo a redmeteoaficionadachile@gmail.com, para que la admin te envíe los formularios de inscripción y la ID de Usuario de Redmeteo.cl
@@ -35,6 +35,6 @@ Este código está licenciado por la Licencia Pública General versión 3 de GNU
     sudo /etc/init.d/weewx start
     ```
 
-## Bugs Conocidos
+## Cosas no soportadas por este plugin
 
 Este plugin no permite transmitir datos de radiación solar/UV ni tampoco sensores de suelo.
