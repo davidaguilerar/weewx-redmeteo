@@ -170,7 +170,7 @@ class RedmeteoThread(weewx.restx.RESTThread):
         # put data into expected structure and format
         time_tt = time.localtime(record['dateTime'])
         values = {
-            'format': 'stickertags',
+            'format': 'stickertag',
             'ID': self.idestacion,
             'date': time.strftime("%d/%m/%Y", time_tt),
             'time': time.strftime("%H:%M:%S", time_tt),
