@@ -2,7 +2,7 @@
 # Portions of code from WEEWX-WINDGURU
 
 """
-Esta extensión de WeeWX sube datos a Redmeteo.cl.
+Esta extension de WeeWX sube datos a Redmeteo.cl.
 
 http://redmeteo.cl/
 
@@ -10,16 +10,16 @@ Para registrarte, debes escribir a redmeteoaficionadachile@gmail.com
 
 Se prefiere subir un registro cada 5 minutos (post_interval)
 
-Configuración mínima:
+Configuracion minima:
 
 [StdRESTful]
     [[Redmeteo]]
         idestacion = ID_USUARIO_REDMETEO.CL
 
 Redmeteo.cl no tiene una API documentada pero escribiendo al correo,
- pueden responder rápidamente con las dudas
+ pueden responder rapidamente con las dudas
 
-Los datos se envían en una Solicitud GET de este tipo:
+Los datos se envian en una Solicitud GET de este tipo:
 
 http://redmeteo.cl/telemetry.php?format=stickertag&ID=ID_USUARIO_REDMETEO.CL&date=DD/MM/YY&time=12:34&temp=outTemp&heatindex=heatIndex&windchill=windChill&rh=RH&dewpoint=DewPoint&baro=Pressure&prestrend=PressTrend&wsavg=WindSpeed&wdirangle=WindDir&rain=DailyRain&wgust=WindGust&wsunit=WindUnit&tempunit=TempUnit&presunit=PressureUnit&rainunit=RainUnit
 
@@ -91,7 +91,7 @@ class Redmeteo(weewx.restx.StdRESTbase):
     def __init__(self, engine, config_dict):
         """Este servicio reconoce el siguiente login
 
-        idestacion: ID de usuario o estación en Redmeteo.cl
+        idestacion: ID de usuario o estacion en Redmeteo.cl
 
         """
         super(Redmeteo, self).__init__(engine, config_dict)
