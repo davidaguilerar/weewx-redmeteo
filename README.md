@@ -9,7 +9,7 @@ Este código está licenciado por la Licencia Pública General versión 3 de GNU
 ### Requerimientos: Este plugin necesita al menos WeeWX versión 3 o superior corriendo en tu sistema.
 
 ## Instalación en tu sistema corriendo WeeWX 
-1. Envía un correo a redmeteoaficionadachile@gmail.com, para que la admin te envíe los formularios de inscripción y la ID de Usuario de Redmeteo.cl
+1. Envía un correo a administracion@redmeteo.cl, para que la admin te envíe los formularios de inscripción a la Red Meteorológica Aficionada y la ID de Usuario de Redmeteo.cl
 
 2. Descarga la extensión vía terminal
     ```
@@ -38,3 +38,5 @@ Este código está licenciado por la Licencia Pública General versión 3 de GNU
 ## Cosas no soportadas por este plugin
 
 Este plugin no permite transmitir datos de radiación solar/UV ni tampoco sensores de suelo.
+
+### Te invito: Si eres programador Python, puedes ayudarme a extender este plugin, y poder ampliar el soporte de sensores (especialmente de radiación solar).
