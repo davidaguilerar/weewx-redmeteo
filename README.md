@@ -6,7 +6,7 @@ Basado en la [Extensión de Weewx-Windguru](https://github.com/claudobahn/weewx-
 
 Este código está licenciado por la Licencia Pública General versión 3 de GNU (GPLv3). Úsese bajo su propio riesgo. No hay garantías de su funcionamiento.
 
-English: This code adds support to Redmeteo.cl (chilean weather network for enthusiasts of weather and climate) to upload live data as a RESTful service, directly on Red Meteoaficionada's server. This plugin needs at least WeeWX version 3 running on your system. A few bugs: Solar radiation, UV measurements and indoor sensors data are not supported by this plugin.
+**Abstract in English** : This code adds support to *Redmeteo.cl* (chilean weather network for enthusiasts of weather and climate) to upload live data as a RESTful service, directly on Red Meteoaficionada's server. This plugin needs at least WeeWX version 3 running on your system. Note: Solar radiation, UV measurements and indoor sensors data *are not supported* by this plugin.
 
 ### Requerimientos: Este plugin necesita al menos WeeWX versión 3 o superior corriendo en tu sistema.
 
