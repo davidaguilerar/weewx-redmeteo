@@ -12,6 +12,7 @@ Este código está licenciado por la Licencia Pública General versión 3 de GNU
 
 ## Instalación en tu sistema corriendo WeeWX 
 1. Envía un correo a redmeteoaficionadachile@gmail.com, para que la admin te envíe los formularios de inscripción a la Red Meteorológica Aficionada y la ID de Usuario de Redmeteo.cl
+
 *Send an email to redmeteoaficionadachile@gmail.com in order to get the sign-up forms from the Redmeteo.cl Administration, and the Redmeteo User ID*
 
 2. Descarga la extensión vía terminal
@@ -21,12 +22,14 @@ Este código está licenciado por la Licencia Pública General versión 3 de GNU
     ```
 
 3. Ejecuta el instalador del plugin:
+
 *Execute the plugin install script*
     ```
     wee_extension --install weewx-redmeteo.zip
     ```
 
 4. Actualiza el archivo weewx.conf (normalmente se ubica en /etc/weewx/):
+
 *Update weewx.conf file (normally located at /etc/weewx/)*
     ```
     [StdRESTful]
@@ -35,6 +38,7 @@ Este código está licenciado por la Licencia Pública General versión 3 de GNU
     ```
 
 5. Reinicia WeeWX
+
 *Restart WeeWX*
     ```
     sudo /etc/init.d/weewx stop
