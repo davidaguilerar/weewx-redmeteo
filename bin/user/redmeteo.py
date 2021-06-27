@@ -21,7 +21,7 @@ Redmeteo.cl no tiene una API documentada pero escribiendo al correo,
 
 Los datos se envian en una Solicitud GET de este tipo:
 
-http://redmeteo.cl/telemetry.php?format=stickertag&ID=ID_USUARIO_REDMETEO.CL&date=DD/MM/YY&time=12:34&temp=outTemp&heatindex=heatIndex&windchill=windChill&rh=RH&dewpoint=DewPoint&baro=Pressure&prestrend=PressTrend&wsavg=WindSpeed&wdirangle=WindDir&rain=DailyRain&wgust=WindGust&wsunit=WindUnit&tempunit=TempUnit&presunit=PressureUnit&rainunit=RainUnit
+http://redmeteo.cl/extelemetry.php?format=raw&ID=ID_USUARIO_REDMETEO.CL&date=DD/MM/YY&time=12:34&temp=outTemp&heatindex=heatIndex&windchill=windChill&rh=RH&dewpoint=DewPoint&baro=Pressure&prestrend=PressTrend&wsavg=WindSpeed&wdirangle=WindDir&rain=DailyRain&wgust=WindGust&wsunit=WindUnit&tempunit=TempUnit&presunit=PressureUnit&rainunit=RainUnit
 
 """
 
@@ -117,7 +117,7 @@ class Redmeteo(weewx.restx.StdRESTbase):
 
 
 class RedmeteoThread(weewx.restx.RESTThread):
-    _SERVER_URL = 'https://redmeteo.cl/telemetry.php'
+    _SERVER_URL = 'https://redmeteo.cl/extelemetry.php'
     _DATA_MAP = {'temp': ('outTemp', '%.1f'),  # C
                  'wdirangle': ('windDir', '%.0f'),  # degree
                  'wsavg': ('windSpeed', '%.1f'),  # knots
@@ -128,7 +128,9 @@ class RedmeteoThread(weewx.restx.RESTThread):
                  'heatindex': ('heatindex', '%.1f'), # ?
                  'windchill': ('windchill', '%.1f'), # C
                  'dewpoint': ('dewpoint', '%.1f'), # C
-                 'presstrend': "NULL"   #nothing
+                 'presstrend': "NULL",   #nothing
+                 'uv': ('UV', '%.0f'), # index
+                 'sw': ('radiation', '%.0f') # W/m^2
                  }
 
     def __init__(self, queue, idestacion, manager_dict,
