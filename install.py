@@ -10,13 +10,14 @@ def loader():
 class RedmeteoInstaller(ExtensionInstaller):
     def __init__(self):
         super(RedmeteoInstaller, self).__init__(
-            version="0.1",
+            version="0.2",
             name='redmeteo',
             description='Subir datos a Redmeteo.cl',
             restful_services='user.redmeteo.Redmeteo',
             config={
                 'StdRESTful': {
                     'Redmeteo': {
-                        'idestacion': 'reemplazame'}}},
+                        'idestacion': 'RMCLXXXX',
+                        'claveestacion': 'ABCDEFG'}}},
             files=[('bin/user', ['bin/user/redmeteo.py'])]
         )
