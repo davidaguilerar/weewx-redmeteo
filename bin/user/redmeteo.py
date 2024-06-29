@@ -12,8 +12,8 @@ Minimal configuration:
 
 [StdRESTful]
     [[Redmeteo]]
-        IDrmcl = WEATHERSTATIONID
-        KEYrmcl = STATIONKEY
+        idestacion = WEATHERSTATIONID
+        claveestacion = STATIONKEY
 
 Redmeteo.cl does not have a well documented API, but sending an email, the Redmeteo team are able to quickly respond your questions.
 
@@ -29,8 +29,8 @@ Configuracion minima:
 
 [StdRESTful]
     [[Redmeteo]]
-        IDrmcl = ID_ESTACION_MET_REDMETEO
-        KEYrmcl = CLAVE_ESTACION
+        idestacion = ID_ESTACION_MET_REDMETEO
+        claveestacion = CLAVE_ESTACION
 
 Redmeteo.cl no tiene una API documentada pero escribiendo al correo,
  pueden responder rapidamente con las dudas
@@ -57,7 +57,7 @@ import weewx
 import weewx.restx
 import weewx.units
 
-VERSION = "0.1"
+VERSION = "0.2"
 
 if weewx.__version__ < "3":
     raise weewx.UnsupportedFeature("WeeWX 3 is required, you have %s" %
