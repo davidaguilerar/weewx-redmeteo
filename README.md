@@ -13,7 +13,7 @@ Se actualizó a la versión RedMeteo 3.0.
 ### Requerimientos: Este plugin necesita al menos WeeWX versión 3 o superior corriendo en tu sistema.
 
 ## Instalación en tu sistema corriendo WeeWX 
-1. Envía un correo a redmeteoaficionadachile@gmail.com, para que la admin te envíe los formularios de inscripción a la Red Meteorológica Aficionada y la ID y clave de Estación de Redmeteo.cl. *(Send an email to redmeteoaficionadachile@gmail.com in order to get the sign-up forms from the Redmeteo.cl Administration, and the Redmeteo User ID/KEY)*
+1. Envía un correo a redmeteoaficionadachile@gmail.com, para que te inviten al nuevo Portal de Usuarios de RedMeteo, donde debes registrar tu estación meteorológica, y obtener el ID y Clave. *(Send an email to redmeteoaficionadachile@gmail.com in order to get the invite link to access the Redmeteo User Portal, and enroll your weather station*
 
 2. Descarga la extensión vía terminal: *(Donwload the extension using a shell)*
     ```
@@ -29,7 +29,7 @@ Se actualizó a la versión RedMeteo 3.0.
     ```
     [StdRESTful]
         [[Redmeteo]]
-            idusuario = RMCLXXXX
+            idestacion = RMCLXXXX
             claveestacion = ABCDEFG
     ```
 
@@ -39,8 +39,4 @@ Se actualizó a la versión RedMeteo 3.0.
     sudo /etc/init.d/weewx start
     ```
 
-## Cosas no soportadas por este plugin
-
-Este plugin no permite transmitir datos de radiación solar/UV ni tampoco sensores de suelo.
-
-### Te invito: Si eres programador Python, puedes ayudarme a extender este plugin, y poder ampliar el soporte de sensores (especialmente de radiación solar).
+### Te invito: Si eres programador Python, puedes ayudarme a extender este plugin.
