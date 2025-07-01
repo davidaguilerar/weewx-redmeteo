@@ -98,6 +98,9 @@ except ImportError:
 def _mps_to_knot(v):
     from_t = (v, 'meter_per_second', 'group_speed')
     return weewx.units.convert(from_t, 'knot')[0]
+def _mps_to_mph(v):
+    from_t = (v, 'meter_per_second', 'group_speed')
+    return weewx.units.convert(from_t, 'mph')[0]
 
 class Redmeteo(weewx.restx.StdRESTbase):
     def __init__(self, engine, config_dict):
@@ -181,9 +184,9 @@ class RedmeteoThread(weewx.restx.RESTThread):
         # put everything into the right units and scaling
         record = weewx.units.to_US(in_record)
         if 'windSpeed' in record and record['windSpeed'] is not None:
-            record['windSpeed'] = _mps_to_knot(record['windSpeed'])
+            record['windSpeed'] = _mps_to_mph(record['windSpeed'])
         if 'windGust' in record and record['windGust'] is not None:
-            record['windGust'] = _mps_to_knot(record['windGust'])
+            record['windGust'] = _mps_to_mph(record['windGust'])
 
         # put data into expected structure and format
         time_tt = time.localtime(record['dateTime'])
